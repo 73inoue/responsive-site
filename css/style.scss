@@ -1,0 +1,177 @@
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Abel);
+// font-family
+$baseFontFamily :"游ゴシック", YuGothic, "メイリオ",Verdana, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+// colors
+$baseColor: #fdf9ea;
+$subColor: #8e6d55;
+$keyColor: #8fb618;
+$fontColor: #4c4c4c;
+
+/* Base
+------------------------------------------------------------*/
+html{ font-size: 62.5%; }
+
+body{
+  color: $fontColor;
+  font-size: 1.4rem;
+  font-family: $baseFontFamily;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  background-color: $baseColor;
+}
+
+a {
+  @include link-colors($keyColor, darken($keyColor, 10%), lighten($keyColor, 5%), darken($keyColor, 10%));
+  text-decoration: none;
+}
+
+/* Align
+------------------------------------------------------------*/
+.text-center {
+  text-align: center;
+}
+
+/* Layout
+------------------------------------------------------------*/
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header
+------------------------------------------------------------*/
+#main-img {
+  height: 500px;
+  background: url(../images/main-img.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+/* Contents
+------------------------------------------------------------*/
+// Common Styles
+section {
+  padding: 80px 0;
+  .container {
+    width: 90%;
+    @extend .block-center;
+  }
+  h1 {
+    margin-bottom: 60px;
+    font-size: 3.6rem;
+    color: #fff;
+  }
+  h2 {
+    font-size: 2.6rem;
+    line-height: 1.2;
+  }
+  .button {
+    max-width: 300px;
+    @include border-radius(6px);
+    a {
+      display: block;
+      padding: 15px;
+      &:hover {
+  			@include opacity(0.8);
+  		}
+  	}
+  }
+}
+// main-info
+#main-info {
+  background: $subColor;
+  .container {
+    @include display-flex;
+    justify-content: space-between;
+    @include flex-direction(row);
+  }
+  h2 {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid $keyColor;
+    span {
+      display: block;
+      font-size: 1.6rem;
+    }
+  }
+  .box {
+    @include flex(1);
+    margin: 0 10px;
+    padding: 20px;
+    background-color: $baseColor;
+    @include border-radius(6px);
+    @include box-sizing(border-box);
+  }
+}
+// other-info
+#other-info {
+  h2 {
+    margin-bottom: 30px;
+  }
+  .button {
+    background: $keyColor;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+// タブレット/スマートフォン
+@media (max-width: 768px) {
+  /* Header
+  ------------------------------------------------------------*/
+  #main-img {
+    height: 250px;
+  }
+
+  /* Contents
+  ------------------------------------------------------------*/
+  // Common Styles
+  section {
+    padding: 60px 0;
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2.8rem;
+      color: #fff;
+    }
+    h2 {
+      font-size: 2.4rem;
+      line-height: 1.2;
+    }
+    .button {
+      max-width: 300px;
+      @include border-radius(6px);
+      a {
+        display: block;
+        padding: 15px;
+        &:hover {
+    			@include opacity(0.8);
+    		}
+    	}
+    }
+  }
+  // main-info
+  #main-info {
+    .container {
+      @include flex-direction(column);
+    }
+    h2 {
+      span {
+        font-size: 1.4rem;
+      }
+    }
+    .box {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  // other-info
+  #other-info {
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+}
